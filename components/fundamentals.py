@@ -17,7 +17,7 @@ def show_pmi_chart():
     st.subheader("PMI Index Over Time")
     df = pd.read_csv('data/pmi_data.csv')
     df['Date'] = pd.to_datetime(df['Date'])
-    st.line_chart(df.set_index('Date')['PMIIndex'])
+    st.line_chart(df.set_index('Date')['PMI Index'])
 
 def show_interest_rate_chart():
     st.subheader("Interest Rate Over Time")
