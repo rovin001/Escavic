@@ -19,3 +19,11 @@ from components.fundamentals import show_fundamentals
 if tab == "🌍 Fundamentals":
     st.header("Fundamental Analysis")
     show_fundamentals()
+with st.expander("View GDP Growth Rate"):
+    show_gdp_chart()
+
+with st.expander("View PMI Index"):
+    show_pmi_chart()
+
+with st.expander("View Interest Rate"):
+    show_interest_rate_chart()
