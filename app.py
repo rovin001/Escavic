@@ -1,4 +1,5 @@
 import streamlit as st
+from components.fundamentals import show_fundamentals, show_gdp_chart, show_pmi_chart, show_interest_rate_chart
 
 st.set_page_config(page_title="TradeScope AI", layout="wide")
 
@@ -7,23 +8,21 @@ tab = st.sidebar.radio("Select Section", ["🌍 Fundamentals", "📈 Sentiment",
 
 if tab == "🌍 Fundamentals":
     st.header("Fundamental Analysis")
-    st.write("CPI, Interest Rate, GDP Data etc. will be shown here.")
+    show_fundamentals()
+    
+    with st.expander("View GDP Growth Rate"):
+        show_gdp_chart()
+
+    with st.expander("View PMI Index"):
+        show_pmi_chart()
+
+    with st.expander("View Interest Rate"):
+        show_interest_rate_chart()
+
 elif tab == "📈 Sentiment":
     st.header("Sentiment Analysis")
     st.write("Broker reports and order flow sentiment here.")
+
 elif tab == "🧠 News Summarizer":
     st.header("News Summarizer")
     st.write("This section will show AI-based news summaries.")
-from components.fundamentals import show_fundamentals
-
-if tab == "🌍 Fundamentals":
-    st.header("Fundamental Analysis")
-    show_fundamentals()
-with st.expander("View GDP Growth Rate"):
-    show_gdp_chart()
-
-with st.expander("View PMI Index"):
-    show_pmi_chart()
-
-with st.expander("View Interest Rate"):
-    show_interest_rate_chart()
