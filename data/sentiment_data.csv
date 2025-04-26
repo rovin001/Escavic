@@ -1,1 +1,4 @@
-﻿asdf,adsf
+Date,Broker Name,Buy Orders,Sell Orders
+2024-01-01,Broker A,60,40
+2024-01-02,Broker B,55,45
+2024-01-03,Broker C,70,30
