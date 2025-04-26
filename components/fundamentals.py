@@ -11,7 +11,7 @@ def show_gdp_chart():
     st.subheader("GDP Growth Rate Over Time")
     df = pd.read_csv('data/gdp_data.csv')
     df['Date'] = pd.to_datetime(df['Date'])
-    st.line_chart(df.set_index('Date')['GDPGrowthRate'])
+    st.line_chart(df.set_index('Date')['GDP Growth Rate (%)'])
 
 def show_pmi_chart():
     st.subheader("PMI Index Over Time")
