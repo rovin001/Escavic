@@ -1,5 +1,6 @@
 import streamlit as st
 from components.fundamentals import show_fundamentals, show_gdp_chart, show_pmi_chart, show_interest_rate_chart
+from components.sentiment import show_sentiment  # 👈 import upar laa diya
 
 st.set_page_config(page_title="TradeScope AI", layout="wide")
 
@@ -21,15 +22,8 @@ if tab == "🌍 Fundamentals":
 
 elif tab == "📈 Sentiment":
     st.header("Sentiment Analysis")
-    st.write("Broker reports and order flow sentiment here.")
+    show_sentiment()
 
 elif tab == "🧠 News Summarizer":
     st.header("News Summarizer")
     st.write("This section will show AI-based news summaries.")
-from components.sentiment import show_sentiment
-
-# ... your existing tabs
-
-elif tab == "📈 Sentiment":
-    st.header("Sentiment Analysis")
-    show_sentiment()
