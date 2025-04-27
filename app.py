@@ -3,7 +3,6 @@ from components.fundamentals import show_fundamentals, show_gdp_chart, show_pmi_
 from components.sentiment import show_sentiment  # 👈 import upar laa diya
 from components.news_summarizer import news_summarizer_tab
 from PIL import Image  # for local image loading
-
 # 1️⃣ Load your logo
 logo = Image.open("assets/escavic tr.png")
 
@@ -18,6 +17,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 st.set_page_config(page_title="TradeScope AI", layout="wide")
 
