@@ -16,7 +16,7 @@ with col2:
     st.markdown(
         """
         <div style='padding-top: 10px;'>
-            <h1 style='margin-bottom: 0; font-size: 36px;'>TradeScope AI</h1>
+            <h1 style='margin-bottom: 0; font-size: 36px;'>Escavic</h1>
             <p style='color: grey; font-size: 18px; margin-top: 0;'>Macro, Sentiment & News in One Dashboard</p>
         </div>
         """,
