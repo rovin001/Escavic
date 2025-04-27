@@ -19,10 +19,7 @@ with col2:
 
 # 3️⃣ Now start your Sidebar
 st.sidebar.title("📊 TradeScope AI")
-tab = st.sidebar.radio("Select Section", ["🌍 Fundamentals", "📈 Sentiment", "🧠 News Summarizer"])
 
-
-st.sidebar.title("📊 TradeScope AI")
 st.sidebar.markdown("""
 **About:**  
 TradeScope AI is a powerful dashboard for Forex traders, providing real-time **fundamental** and **sentiment** analysis in one place.  
