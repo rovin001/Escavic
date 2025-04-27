@@ -9,7 +9,7 @@ st.set_page_config(page_title="TradeScope AI", layout="wide")
 col1, col2 = st.columns([1, 8])
 
 with col1:
-    logo = Image.open("assets/Escavic.jpg")
+    logo = Image.open("assets/escavic.png")
     st.image(logo, width=60)  # slightly smaller = cleaner
 
 with col2:
