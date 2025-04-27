@@ -33,3 +33,22 @@ def show_sentiment():
     )
 
     st.altair_chart(bar_chart, use_container_width=True)
+def show_cot_report():
+    st.subheader("🗂️ COT Report (Longs vs Shorts)")
+    df = pd.read_csv("data/cot_data.csv")
+    df['Date'] = pd.to_datetime(df['Date'])
+    # Melt so we can plot both series in one chart
+    cot = df.melt(id_vars=['Date'], value_vars=['Longs','Shorts'],
+                  var_name='Position', value_name='Contracts')
+    chart = (
+        alt.Chart(cot)
+           .mark_line(point=True)
+           .encode(
+               x=alt.X('Date:T', title='Date', axis=alt.Axis(labelAngle=-45)),
+               y=alt.Y('Contracts:Q', title='Number of Contracts'),
+               color='Position:N',
+               tooltip=['Date','Position','Contracts']
+           )
+           .properties(width=800, height=350, title="COT Longs vs Shorts Over Time")
+    )
+    st.altair_chart(chart, use_container_width=True)
