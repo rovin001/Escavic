@@ -52,5 +52,4 @@ elif tab == "📈 Sentiment":
     show_sentiment()
 
 elif tab == "🧠 News Summarizer":
-    st.header("News Summarizer")
     news_summarizer_tab()
