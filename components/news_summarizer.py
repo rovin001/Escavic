@@ -8,7 +8,7 @@ def load_summarizer():
     return pipeline("summarization", model="t5-small")
 
 def news_summarizer_tab():
-    st.header("🧠 News Summarizer")
+    st.header("News Summarizer")
     summarizer = load_summarizer()
 
     choice = st.radio("Choose Input Type", ["Paste Article", "Fetch Live"])
