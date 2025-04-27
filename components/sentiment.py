@@ -36,24 +36,26 @@ def show_sentiment():
 def show_cot_report():
     st.subheader("🗂️ COT Report — Longs vs Shorts")
 
-    # Load your COT CSV
+    # Load and preprocess
     df = pd.read_csv('data/cot_data.csv')
     df['Date'] = pd.to_datetime(df['Date'])
+    # Create a Month string column for better axis labels
+    df['Month'] = df['Date'].dt.strftime('%Y-%m')
 
-    # Melt so we can plot both series side-by-side
+    # Melt so we can plot both series
     cot_melted = df.melt(
-        id_vars=['Date'],
+        id_vars=['Month'],
         value_vars=['Longs', 'Shorts'],
         var_name='Position',
         value_name='Contracts'
     )
 
-    # Bar chart just like your sentiment bars
+    # Bar chart: Longs vs Shorts per Month
     bar_chart = (
         alt.Chart(cot_melted)
             .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3)
             .encode(
-                x=alt.X('Date:O', title='Date'),
+                x=alt.X('Month:N', title='Month', axis=alt.Axis(labelAngle=-45)),
                 y=alt.Y('Contracts:Q', title='Number of Contracts'),
                 color=alt.Color(
                     'Position:N',
@@ -61,13 +63,13 @@ def show_cot_report():
                                     range=['#1f77b4', '#ff7f0e']),
                     legend=alt.Legend(title="Position")
                 ),
-                tooltip=['Date', 'Position', 'Contracts']
+                column=alt.Column('Position:N', title=None),
+                tooltip=['Month','Position','Contracts']
             )
             .properties(
-                width=700,
-                height=400,
-                title='COT Longs vs Shorts'
+                width=250,     # each facet width
+                height=350,
+                title='COT Longs vs Shorts by Month'
             )
     )
-
     st.altair_chart(bar_chart, use_container_width=True)
