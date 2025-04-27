@@ -5,7 +5,7 @@ from components.sentiment import show_sentiment  # 👈 import upar laa diya
 from components.news_summarizer import news_summarizer_tab
 
 
-st.set_page_config(page_title="TradeScope AI", layout="wide")
+st.set_page_config(page_title="Escavic", layout="wide")
 col1, col2 = st.columns([1, 8])
 
 with col1:
@@ -24,12 +24,13 @@ with col2:
     )
 
 # 3️⃣ Now start your Sidebar
-st.sidebar.title("📊 TradeScope AI")
+st.sidebar.title("📊 Escavic")
 
 st.sidebar.markdown("""
 **About:**  
-TradeScope AI is a powerful dashboard for Forex traders, providing real-time **fundamental** and **sentiment** analysis in one place.  
+Escavic is a powerful dashboard for Forex traders, providing real-time **fundamental** and **sentiment** analysis in one place.  
 Built by the **Traders** for the **Traders**!
+
 Let's Escape to the **VICTORY**
 """)
 tab = st.sidebar.radio("Select Section", ["🌍 Fundamentals", "📈 Sentiment", "🧠 News Summarizer"])
