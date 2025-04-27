@@ -32,4 +32,4 @@ elif tab == "📈 Sentiment":
 
 elif tab == "🧠 News Summarizer":
     st.header("News Summarizer")
-    st.write("This section will show AI-based news summaries.")
+    news_summarizer_tab()
