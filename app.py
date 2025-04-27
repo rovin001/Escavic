@@ -5,7 +5,7 @@ from components.news_summarizer import news_summarizer_tab
 from PIL import Image  # for local image loading
 
 # 1️⃣ Load your logo
-logo = Image.open("assets/logo.png")
+logo = Image.open("assets/escavic tr.png")
 
 # 2️⃣ Display it centered with title & subtitle
 st.markdown(
