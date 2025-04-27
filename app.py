@@ -29,9 +29,8 @@ st.sidebar.title("📊 Escavic")
 st.sidebar.markdown("""
 **About:**  
 Escavic is a powerful dashboard for Forex traders, providing real-time **fundamental** and **sentiment** analysis in one place.  
-Built by the **Traders** for the **Traders**!
-
-Let's Escape to the **VICTORY**
+Build by the **Traders** for the **Traders**.
+Let's Escape to the **VICTORY**!
 """)
 tab = st.sidebar.radio("Select Section", ["🌍 Fundamentals", "📈 Sentiment", "🧠 News Summarizer"])
 
