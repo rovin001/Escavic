@@ -34,46 +34,40 @@ def show_sentiment():
 
     st.altair_chart(bar_chart, use_container_width=True)
 def show_cot_report():
-    st.subheader("🗂️ COT Report (Longs vs Shorts)")
-    df = pd.read_csv("data/cot_data.csv")
+    st.subheader("🗂️ COT Report — Longs vs Shorts")
+
+    # Load your COT CSV
+    df = pd.read_csv('data/cot_data.csv')
     df['Date'] = pd.to_datetime(df['Date'])
-    
-    # Melt so we can plot both series
-    cot = df.melt(
+
+    # Melt so we can plot both series side-by-side
+    cot_melted = df.melt(
         id_vars=['Date'],
         value_vars=['Longs', 'Shorts'],
         var_name='Position',
         value_name='Contracts'
     )
-    
-    # Line chart
-    st.markdown("**Trend Over Time (Line Chart)**")
-    line = (
-        alt.Chart(cot)
-           .mark_line(point=True)
-           .encode(
-               x=alt.X('Date:T', title='Date', axis=alt.Axis(labelAngle=-45)),
-               y=alt.Y('Contracts:Q', title='Contracts'),
-               color=alt.Color('Position:N', legend=alt.Legend(title="Position")),
-               tooltip=['Date','Position','Contracts']
-           )
-           .properties(height=300)
-           .interactive(bind_y=False)
-    )
-    st.altair_chart(line, use_container_width=True)
 
-    # Bar chart
-    st.markdown("**Comparison by Month (Bar Chart)**")
-    bar = (
-        alt.Chart(cot)
-           .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3)
-           .encode(
-               x=alt.X('Date:T', title='Date', axis=alt.Axis(labelAngle=-45)),
-               y=alt.Y('Contracts:Q', title='Contracts'),
-               color=alt.Color('Position:N', legend=None),
-               column=alt.Column('Position:N', title=None),
-               tooltip=['Date','Position','Contracts']
-           )
-           .properties(height=300)
+    # Bar chart just like your sentiment bars
+    bar_chart = (
+        alt.Chart(cot_melted)
+            .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3)
+            .encode(
+                x=alt.X('Date:O', title='Date'),
+                y=alt.Y('Contracts:Q', title='Number of Contracts'),
+                color=alt.Color(
+                    'Position:N',
+                    scale=alt.Scale(domain=['Longs', 'Shorts'],
+                                    range=['#1f77b4', '#ff7f0e']),
+                    legend=alt.Legend(title="Position")
+                ),
+                tooltip=['Date', 'Position', 'Contracts']
+            )
+            .properties(
+                width=700,
+                height=400,
+                title='COT Longs vs Shorts'
+            )
     )
-    st.altair_chart(bar, use_container_width=True)
+
+    st.altair_chart(bar_chart, use_container_width=True)
