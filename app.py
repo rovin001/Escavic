@@ -1,6 +1,9 @@
 import streamlit as st
 from components.fundamentals import show_fundamentals, show_gdp_chart, show_pmi_chart, show_interest_rate_chart
 from components.sentiment import show_sentiment  # 👈 import upar laa diya
+from transformers import pipeline
+
+summarizer = pipeline("summarization", model="t5-small")
 
 st.set_page_config(page_title="TradeScope AI", layout="wide")
 
