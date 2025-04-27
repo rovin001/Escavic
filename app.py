@@ -6,17 +6,22 @@ from components.news_summarizer import news_summarizer_tab
 
 
 st.set_page_config(page_title="TradeScope AI", layout="wide")
-# 2️⃣ Add your Logo + Title + Subtitle
-col1, col2 = st.columns([1, 4])
+col1, col2 = st.columns([1, 8])
 
 with col1:
-    logo = Image.open("assets/Escavic.jpg")
-    st.image(logo, width=80)
+    logo = Image.open("assets/escavic_logo.png")
+    st.image(logo, width=60)  # slightly smaller = cleaner
 
 with col2:
-    st.markdown("<h1 style='margin-bottom: 0;'>TradeScope AI</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color: grey; font-size: 18px; margin-top: 0;'>Macro, Sentiment & News in One Dashboard</p>", unsafe_allow_html=True)
-
+    st.markdown(
+        """
+        <div style='padding-top: 10px;'>
+            <h1 style='margin-bottom: 0; font-size: 36px;'>TradeScope AI</h1>
+            <p style='color: grey; font-size: 18px; margin-top: 0;'>Macro, Sentiment & News in One Dashboard</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 # 3️⃣ Now start your Sidebar
 st.sidebar.title("📊 TradeScope AI")
 
