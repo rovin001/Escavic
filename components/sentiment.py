@@ -37,18 +37,43 @@ def show_cot_report():
     st.subheader("🗂️ COT Report (Longs vs Shorts)")
     df = pd.read_csv("data/cot_data.csv")
     df['Date'] = pd.to_datetime(df['Date'])
-    # Melt so we can plot both series in one chart
-    cot = df.melt(id_vars=['Date'], value_vars=['Longs','Shorts'],
-                  var_name='Position', value_name='Contracts')
-    chart = (
+    
+    # Melt so we can plot both series
+    cot = df.melt(
+        id_vars=['Date'],
+        value_vars=['Longs', 'Shorts'],
+        var_name='Position',
+        value_name='Contracts'
+    )
+    
+    # Line chart
+    st.markdown("**Trend Over Time (Line Chart)**")
+    line = (
         alt.Chart(cot)
            .mark_line(point=True)
            .encode(
                x=alt.X('Date:T', title='Date', axis=alt.Axis(labelAngle=-45)),
-               y=alt.Y('Contracts:Q', title='Number of Contracts'),
-               color='Position:N',
+               y=alt.Y('Contracts:Q', title='Contracts'),
+               color=alt.Color('Position:N', legend=alt.Legend(title="Position")),
                tooltip=['Date','Position','Contracts']
            )
-           .properties(width=800, height=350, title="COT Longs vs Shorts Over Time")
+           .properties(height=300)
+           .interactive(bind_y=False)
     )
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(line, use_container_width=True)
+
+    # Bar chart
+    st.markdown("**Comparison by Month (Bar Chart)**")
+    bar = (
+        alt.Chart(cot)
+           .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3)
+           .encode(
+               x=alt.X('Date:T', title='Date', axis=alt.Axis(labelAngle=-45)),
+               y=alt.Y('Contracts:Q', title='Contracts'),
+               color=alt.Color('Position:N', legend=None),
+               column=alt.Column('Position:N', title=None),
+               tooltip=['Date','Position','Contracts']
+           )
+           .properties(height=300)
+    )
+    st.altair_chart(bar, use_container_width=True)
