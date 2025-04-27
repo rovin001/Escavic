@@ -5,6 +5,11 @@ from components.sentiment import show_sentiment  # 👈 import upar laa diya
 st.set_page_config(page_title="TradeScope AI", layout="wide")
 
 st.sidebar.title("📊 TradeScope AI")
+st.sidebar.markdown("""
+**About:**  
+TradeScope AI is a powerful dashboard for Forex traders, providing real-time **fundamental** and **sentiment** analysis in one place.  
+Built with ❤️ using Streamlit.
+""")
 tab = st.sidebar.radio("Select Section", ["🌍 Fundamentals", "📈 Sentiment", "🧠 News Summarizer"])
 
 if tab == "🌍 Fundamentals":
