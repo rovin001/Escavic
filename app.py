@@ -6,46 +6,23 @@ from components.news_summarizer import news_summarizer_tab
 
 
 st.set_page_config(page_title="TradeScope AI", layout="wide")
-st.markdown(
-    """
-    <style>
-    .header-container {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .header-logo img {
-        width: 70px; /* Logo size */
-        height: auto;
-    }
-    .header-text h1 {
-        margin-bottom: 0px;
-    }
-    .header-text p {
-        margin-top: 0px;
-        color: grey;
-        font-size: 18px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+col1, col2 = st.columns([1, 8])
 
-# Layout
-st.markdown(
-    """
-    <div class="header-container">
-        <div class="header-logo">
-            <img src="assets/escavic.png" alt="Logo">
+with col1:
+    logo = Image.open("assets/escavic_logo.png")
+    st.image(logo, width=160)  # slightly smaller = cleaner
+
+with col2:
+    st.markdown(
+        """
+        <div style='padding-top: 10px;'>
+            <h1 style='margin-bottom: 0; font-size: 36px;'>TradeScope AI</h1>
+            <p style='color: grey; font-size: 18px; margin-top: 0;'>Macro, Sentiment & News in One Dashboard</p>
         </div>
-        <div class="header-text">
-            <h1>TradeScope AI</h1>
-            <p>Macro, Sentiment & News in One Dashboard</p>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+        """,
+        unsafe_allow_html=True
+    )
+
 # 3️⃣ Now start your Sidebar
 st.sidebar.title("📊 TradeScope AI")
 
