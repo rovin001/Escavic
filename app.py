@@ -10,7 +10,7 @@ col1, col2 = st.columns([1, 8])
 
 with col1:
     logo = Image.open("assets/escavic.png")
-    st.image(logo, width=60)  # slightly smaller = cleaner
+    st.image(logo, width=120)  # slightly smaller = cleaner
 
 with col2:
     st.markdown(
