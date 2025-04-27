@@ -11,7 +11,7 @@ logo = Image.open("assets/logo.png")
 st.markdown(
     """
     <div style="display:flex; flex-direction:column; align-items:center; padding:10px 0;">
-      <img src="assets/logo.png" width="120" />
+      <img src="assets/escavic tr.png" width="120" />
       <h1 style="margin:5px 0;">TradeScope AI</h1>
       <p style="margin:0; color:#555;">Macro, Sentiment & News in One Dashboard</p>
     </div>
