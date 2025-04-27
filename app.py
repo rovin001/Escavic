@@ -24,7 +24,7 @@ with col2:
     )
 
 # 3️⃣ Now start your Sidebar
-st.sidebar.title("📊 Escavic")
+st.sidebar.title("Escavic")
 
 st.sidebar.markdown("""
 **About:**  
