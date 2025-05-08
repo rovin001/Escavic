@@ -35,17 +35,28 @@ def show_sentiment():
     st.altair_chart(bar_chart, use_container_width=True)
 def show_cot_report():
     st.subheader("🗂️ COT Report — Longs vs Shorts")
+
+    # Load the data
     df = pd.read_csv('data/cot_data.csv')
     df['Date'] = pd.to_datetime(df['Date'])
     df['Month'] = df['Date'].dt.strftime('%Y-%m')
 
-    melted_cot = df.melt(
+    # Select Currency Pair
+    pairs = df['Currency Pair'].unique()
+    selected_pair = st.selectbox("Select Currency Pair", pairs)
+
+    # Filter by selected pair
+    pair_df = df[df['Currency Pair'] == selected_pair]
+
+    # Melt the data for plotting
+    melted_cot = pair_df.melt(
         id_vars=['Month'],
-        value_vars=['Longs', 'Shorts'],
+        value_vars=['Long Positions', 'Short Positions'],
         var_name='Position',
         value_name='Contracts'
     )
 
+    # Plot the chart
     cot_chart = (
         alt.Chart(melted_cot)
             .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3)
@@ -54,7 +65,7 @@ def show_cot_report():
                 y=alt.Y('Contracts:Q', title='Number of Contracts', stack='zero'),
                 color=alt.Color(
                     'Position:N',
-                    scale=alt.Scale(domain=['Longs', 'Shorts'], range=['#1f77b4', '#ff7f0e']),
+                    scale=alt.Scale(domain=['Long Positions', 'Short Positions'], range=['#1f77b4', '#ff7f0e']),
                     legend=alt.Legend(title="Position")
                 ),
                 tooltip=['Month', 'Position', 'Contracts']
@@ -62,7 +73,7 @@ def show_cot_report():
             .properties(
                 width=700,
                 height=400,
-                title='COT Longs vs Shorts Stacked by Month'
+                title=f'COT Long vs Short Positions for {selected_pair}'
             )
     )
 
