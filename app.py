@@ -1,8 +1,8 @@
 import streamlit as st
-from PIL import Image
-from components.fundamentals import show_fundamentals, show_gdp_chart, show_pmi_chart, show_interest_rate_chart
-from components.sentiment import show_sentiment, show_cot_report # 👈 import upar laa diya
-from components.news_summarizer import news_summarizer_tab
+# from PIL import Image
+# from components.fundamentals import show_fundamentals, show_gdp_chart, show_pmi_chart, show_interest_rate_chart
+# from components.sentiment import show_sentiment, show_cot_report # 👈 import upar laa diya
+# from components.news_summarizer import news_summarizer_tab
 
 
 # st.set_page_config(page_title="Escavic", layout="wide")
@@ -54,7 +54,7 @@ from components.news_summarizer import news_summarizer_tab
 #         show_cot_report()
 # elif tab == "🧠 News Summarizer":
 #     news_summarizer_tab()
-
+from pages import fundamental_data, sentiment_data, cot_data
 st.set_page_config(page_title="Escavic Dashboard", layout="wide")
 st.title("📊 Escavic – Forex Intelligence Dashboard")
 
