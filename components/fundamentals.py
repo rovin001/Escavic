@@ -28,7 +28,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-def show_fundamental_data():
+def show_fundamentals():
     st.subheader("📊 Fundamental Data by Currency")
 
     # Step 1: Get available currencies from folder names
