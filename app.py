@@ -54,7 +54,7 @@ import streamlit as st
 #         show_cot_report()
 # elif tab == "🧠 News Summarizer":
 #     news_summarizer_tab()
-from components import fundamentals, sentiment, news_summariser
+from components import fundamentals, news_summarizer, sentiment
 st.set_page_config(page_title="Escavic Dashboard", layout="wide")
 st.title("📊 Escavic – Forex Intelligence Dashboard")
 
