@@ -68,8 +68,8 @@ if page == "Home":
     st.markdown("Use the sidebar to navigate through the dashboard features.")
     st.markdown("Built by Rovin and Team 🚀")
 elif page == "Fundamental Data":
-    fundamental_data.show_fundamental_data()
+    fundamentals.show_fundamentals()
 elif page == "Sentiment Data":
-    sentiment_data.show_sentiment()
+    sentiment.show_sentiment()
 elif page == "COT Report":
-    cot_data.show_cot_report()
+    news_summarizer.show_news_summarizer()
