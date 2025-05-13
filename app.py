@@ -61,7 +61,7 @@ st.title("📊 Escavic – Forex Intelligence Dashboard")
 
 page = st.sidebar.selectbox(
     "Choose Section",
-    ["Home", "Fundamental Data", "Sentiment Data", "COT Report"]
+    ["Home", "Fundamental Data", "Sentiment Data", "News Summarizer"]
 )
 
 if page == "Home":
