@@ -72,5 +72,5 @@ elif page == "Fundamental Data":
     fundamentals.show_fundamentals()
 elif page == "Sentiment Data":
     sentiment.show_sentiment()
-elif page == "COT Report":
+elif page == "News Summarizer":
     news_summarizer.show_news_summarizer()
