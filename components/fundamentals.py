@@ -54,6 +54,12 @@ def show_fundamentals():
 
     try:
         df = pd.read_csv(file_path)
+
+        # Sort by date descending if 'Date' column exists
+        if 'Date' in df.columns:
+            df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+            df = df.sort_values(by='Date', ascending=False)
+
         st.success(f"Loaded {selected_type} data for {selected_currency}")
         st.dataframe(df)
 
