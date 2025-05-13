@@ -73,4 +73,4 @@ elif page == "Fundamental Data":
 elif page == "Sentiment Data":
     sentiment.show_sentiment()
 elif page == "News Summarizer":
-    news_summarizer.show_news_summarizer_tab()
+    news_summarizer.news_summarizer_tab()
